@@ -2,7 +2,7 @@ import numpy as np
 import pandas as pd
 import os 
 import yaml
-from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.feature_extraction.text import TfidfVectorizer
 features=yaml.safe_load(open('params.yaml','r'))['feature_engineering']['max_features']
 
 #fetch the data
@@ -31,7 +31,7 @@ test_data['content'] = test_data['content'].fillna('')
 
 
 # Apply Bag of Words (CountVectorizer)
-vectorizer = CountVectorizer(max_features=features)
+vectorizer = TfidfVectorizer(max_features=features)
 
 # Fit the vectorizer on the training data and transform it
 X_train_bow = vectorizer.fit_transform(X_train)
@@ -52,5 +52,5 @@ test_df['label'] = y_test
 data_path=os.path.join("data","external")
 os.makedirs(data_path,exist_ok=True)
 
-train_df.to_csv(os.path.join(data_path,'feature_train.csv'))
-test_df.to_csv(os.path.join(data_path,'feature_test.csv'))
+train_df.to_csv(os.path.join(data_path,'feature_train_tfidf.csv'))
+test_df.to_csv(os.path.join(data_path,'feature_test_tfidf.csv'))

@@ -9,8 +9,8 @@ from sklearn.ensemble import GradientBoostingClassifier
 
 params=yaml.safe_load(open('params.yaml','r'))['model_building']
 #fetch the data
-test_data=pd.read_csv('./data/external/feature_test.csv')
-train_data=pd.read_csv('./data/external/feature_train.csv')
+test_data=pd.read_csv('./data/external/feature_test_tfidf.csv')
+train_data=pd.read_csv('./data/external/feature_train_tfidf.csv')
 
 
 X_train = train_data.iloc[:, 0:-1].values

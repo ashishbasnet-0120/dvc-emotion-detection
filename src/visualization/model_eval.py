@@ -6,7 +6,7 @@ from sklearn.metrics import accuracy_score, precision_score, recall_score, roc_a
 
 # Load the trained model and test features
 clf = pickle.load(open('model.pkl', 'rb'))
-test_data = pd.read_csv('./data/external/feature_test.csv')
+test_data = pd.read_csv('./data/external/feature_test_tfidf.csv')
 
 # Split features and target labels
 X_test = test_data.iloc[:, 0:-1].values
